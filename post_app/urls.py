@@ -11,6 +11,5 @@ urlpatterns = [
     path('document/<document_name>/', views.document_view, name='documents'),
     path('important/<primary_key_name>/', views.important_view, name='important'),
     path('about_us/', views.about_us, name='about_us'),
-    path('image_bg_remove/', views.remove_bg, name='remove_bg'),
 
 ]
