@@ -4,8 +4,8 @@ from post_app.models import *
 from .forms import *  # Imported All Forms
 from django.template.loader import render_to_string
 import random
-from rembg import remove
-from PIL import Image
+# from rembg import remove
+# from PIL import Image
 
 
 # Create your views here.
