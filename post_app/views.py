@@ -191,24 +191,5 @@ def about_us(request):
 
 
 
-def remove_bg(request):
-    if request.method == "POST":
-        image_input = request.POST['bg_image']
-        if image_input:
-            # input_path1 = "/Users/chanderprakashsakarwal/Downloads/vote.jpeg"
-            # print("Image========>")
-            print(image_input)
-            output_path = 'output.png'
-            # input = Image.open(input_path1)
-            output = remove(image_input)
-            output.save(output_path)
-            data = {
-            'image':output
-            }
-            print("data==============")
-            print(data)
-    return render(request, 'image_bg_remove.html')
-  
-    # return render(request,'image_bg_remove.html',data,context={'request':request})
     
    
