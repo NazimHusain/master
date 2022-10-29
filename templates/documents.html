@@ -1,0 +1,167 @@
+{% extends 'navbar.html' %} {% load static %}
+
+{% block data_container  %}
+<body style="background:white">
+ {% for certificate in certificates%}
+
+ <!-- =============================post short info container ======================== -->
+<div class="container short_info col-lg-8 col-md-12 col-sm-12">
+
+    <p> <strong style="color: red;">Name of the post:</strong><strong> {{certificate.document_provider}} </strong> </p>
+    <p><strong style="color: red;">Date Of post:</strong> <strong> 20222</strong></p>
+    <p style="color: black;"> <strong style="color: red;">Short Information:</strong> <strong> {{certificate.document_name}} </strong>  Newly Invited for online Application.The Candidates who are Intrested to fill
+         this application form.He/she can fill the form following all the eligibility criteria.
+         For more details walk through the notification before apply online. </p>
+</div>
+
+<!-- ================================post grid information ===================== -->
+<div class="container post_info col-lg-8 col-md-12 col-sm-12 overflow-hidden">
+            <!-- ==========ads container============ -->
+
+            <div class="container text-center">
+                <p>google ads</p>
+
+            </div>
+
+            <!-- table block         -->
+            <table class="table table-borderless table-responsive ">
+                    <div class="row">
+
+                        <div class="text-center col-lg-12 col-md-12">
+
+                            <h3>
+                                <strong style="color:magenta;">{{certificate.document_provider}} </strong><strong style="color:darkgreen;">{{certificate.document_name}}</strong>
+
+                            </h3>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- important dates block  -->
+                    <div class="row mb-2">
+                        <div class="col-lg-6 col-md-12 col-sm-12 mb-1">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="text-center">
+                                                <strong>Document Requirement</strong>
+                                            </h5>
+                                            {{certificate.requirements |safe}}
+                                        </div>
+                                    </div>
+                        </div>
+
+
+
+                        <!-- Application block  -->
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-center">
+                                            <strong>Application Fee</strong>
+                                        </h5>
+
+                                            {{certificate.document_fee |safe}}
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Payment block  -->
+                    <div class="row mb-2">
+                        <div class="col-lg-6 col-md-12 col-sm-12 mb-1">
+                            <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-center">
+                                    <strong>Payment Mode</strong>
+                                </h5>
+                                    <li>Debit card,Credit Card,Net Banking Mode</li>
+                                    <li>UPI Etc</li>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Age block  -->
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-center">
+                                    <strong>Age Limit as on </strong>
+                                </h5>
+                                    {{admission.advt_number |safe}}
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+            </table>
+            <!-- ------------------------------------------table grid end block----------------------- -->
+
+           <!-- Vacancy total post block  -->
+            <div class="container text-center">
+                        <h4>
+                            <strong style="color: magenta;">Vacancy Details</strong> <strong style="color: darkgreen;">Total Post:{{certificate.unique_advt_number}}</strong>
+
+                        </h4>
+             </div>
+
+
+
+             <!-- vacancy detail description  -->
+
+                {{certificate.document_detail_desc |safe}}
+
+
+                <!-- ------------------------------notification ads block--------------------------- -->
+               <div class="container mt-5">
+                        <h4>
+                            <strong style="color: darkgray;">Read Notification Before Apply..</strong>
+
+                        </h4>
+                        <p> google ads</p>
+                </div>
+
+
+            <!-- ------------------------------important links------------------------------------- -->
+            <div class="container text-center mt-5">
+                <h3>
+                    <strong style="color: darkorange;">Important Links</strong>
+
+                   </h3>
+            </div>
+            <!-- ------------------------link table block-------------------------------------------- -->
+
+                 {{certificate.document_important_link |safe}}
+
+{% endfor %}
+
+<!-- End For loop  -->
+
+                <!-- ads block  -->
+                <div class="container text-center">
+                    google ads
+                </div>
+<!--==========================================comment started block ==================================================== -->
+             
+
+
+
+</div> <!--End of main container block-->
+
+
+
+
+</body>
+
+
+
+{% endblock %}
+
+

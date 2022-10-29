@@ -1,0 +1,59 @@
+{% extends 'navbar.html' %} {% load static %}
+
+{% block data_container  %}
+<body style="background:white">
+
+
+<div class="container all_page_top_margin">
+
+    <div class="card bg-light register_body">
+        <div class="card-body mx-auto">
+
+          
+            <p class="card-title registration_title">Image BG REMOVE Form</p>
+           
+            <form action="{% url 'remove_bg' %}" method="POST">
+                {% csrf_token %}
+
+                
+
+                <!--First Name Block -->
+                <div class="form-group input-group mt-2">
+                    <div class="input-group-prepend">
+        <span class="input-group-text">
+            <span style="font-size: 1em; color: Tomato;"><i class="fa fa-file"></i></i></span>
+        </span>
+                    </div>
+
+                    <input type="file" name="bg_image" class="form-control" id="bg_image"required/>
+                </div>
+
+             
+
+
+
+
+                <!-- button  -->
+                <button type="submit" class="btn btn-block btn-success font-weight-bold mt-2"><strong>Remove background 
+                    Now </strong>
+                </button>
+
+
+              {{image}}
+              
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--=================================login block ====================================-->
+
+
+
+
+</body>
+
+
+{% endblock %}

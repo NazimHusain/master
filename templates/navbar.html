@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- ========================= static file loaded======================= -->
+
+
+  {% load static %}
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+  <!--javascript and css linking-->
+  <script src="{% static 'javascripts.js' %}"></script>
+  <script src="{% static 'jquery.min.js' %}"></script>
+  <script src="{% static 'awesome_font.js' %}"></script>
+  <!-- css linking -->
+  <link rel="stylesheet" href=" {% static 'style.css' %}" />
+
+  <title>Sarkarilook.com</title>
+</head>
+<!--<div class="container-fluid">-->
+<!--  <img src="/media/images/web_logo.png" alt="sarkarilook" class="rounded img-fluid me-lg-2 me-md-0 bg-light mt-2 " id="#"-->
+<!--  alt="sarkarilook"style="with:15vh;height:15vh;" />-->
+<!--</div>-->
+<!-- ====================================Navbar Start block=================================== -->
+<nav class="navbar navbar-expand-lg navbar-dark  justify-content-sm-Start">
+  <div class="container-fluid">
+    <img src="/media/images/web_logo.png" alt="sarkarilook" class="rounded img-fluid me-lg-2 me-md-0" id="barand_logo"
+      alt="sarkarilook" />
+
+    <a class="navbar-brand  order-lg-0 ml-lg-0 ml-4 mr-auto" id="brand_name_logo" href="/">
+      Sarkarilook.com</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse mt-lg-0 mt-3 mt-0 " id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-lg-0  ">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'remove_bg'  %}"> <i class="fab fa-canadian-maple-leaf" aria-hidden="true"></i>
+            Image background</a>
+        </li>  
+
+        <!-- dropdown block category  started  -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-angle-double-right" aria-hidden="true"></i> Post_category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            {% for c in category %}
+            <li><a class="dropdown-item" href="{% url 'post_category' c.title %}">{{c.title}} </a></li>
+            {% endfor %}
+
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
+        <!-- dropdown end block  -->
+
+  <!-- dropdown block for Admit_card started  -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="#" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-recycle" aria-hidden="true"></i> Post Status
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            {% for stage in stages %}
+            <li><a class="dropdown-item" href="{% url 'admit_card' stage.name %}">{{stage.name}} </a></li>
+            {% endfor %}
+
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
+
+
+        <!-- dropdown end block  -->
+
+        {% if user.is_authenticated %}
+        <!--Profile  dropdown block started  -->
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" id="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Hello {{user.username}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <li><a class="dropdown-item" href="{% url 'about_me' %}">My Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
+
+
+
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+
+            <li><a class="dropdown-item active" href="{% url 'logout' %}">LogOut</a></li>
+          </ul>
+        </li>
+
+        <!--profile dropdown end block  -->
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'registration' %}"><i class="fa fa-user-plus" aria-hidden="true"></i>
+            Register</a>
+        </li>
+        <li class="nav-item float-end">
+          <a class="nav-link active" data-toggle="modal" data-target="#exampleModal" href="#"> <i
+              class="fa fa-sign-in-alt" aria-hidden="true"></i> Login</a>
+        </li>
+
+        {% endif %}
+
+      </ul>
+      <i class="fa fa-clock" aria-hidden="true"></i>&nbsp <span id="clock"></span>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ============================Navbar End Block================================================ -->
+
+ {% load socialaccount %}
+{% providers_media_js %}
+
+
+<!--============================= Modal========================= -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-sign-in-alt"></i> Login Form</h5>
+
+        <button type="button" class="close bg-danger border-0 rounded-circle" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color:white;">&times;</span>
+        </button>
+
+
+      </div>
+
+      <!-- login form started block  -->
+      <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+      
+        <div class="modal-body">
+          <div class="card border-0">
+            <div class="card-boby  mx-auto">
+
+             <a href="{% provider_login_url 'google' %}" class="btn btn-block btn-danger col-12">
+                <i class="fab fa-google "></i> Login With Google</a>
+
+            <a href="{% provider_login_url 'facebook' method='js_sdk' %}" class="btn btn-block btn-primary col-12 mt-1">
+                <i class="fab fa-facebook "></i> Login With Facebook</a>
+            </div>
+          </div>
+          
+          <p class="divider">
+            <span class="bg-light">OR</span>
+        </p>
+
+
+          <div class="form-group input-group overflow-hidden">
+            <div class="input-group-prepend">
+              <span class="input-group-text ">
+                <span style="font-size: 1em; color: Tomato;"><i class="fa fa-at"></i></span>
+              </span>
+            </div>
+            <input type="name" name="username" class="form-control" id="#" placeholder="Enter Username Name" required />
+
+          </div>
+
+          <div class="form-group input-group mt-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <span style="font-size: 1em; color: Tomato;"><i class="fa fa-lock "></i></span>
+              </span>
+            </div>
+            <input type="password" name="password" class="form-control" id="password1" placeholder="Enter Password"
+              required />
+            <input type="hidden" name="next" value="{{ request.get_full_path }}"> 
+          </div>
+          <small class="m-0"><a href="{% url 'password_reset' %}"><strong>Forgot Password  ??</strong></small></a>
+
+        </div>
+        <!-- modal footer  -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success btn-sm">Login</button>
+
+
+        </div>
+
+      </form>
+
+      <!-- login form end block  -->
+    </div>
+  </div>
+</div>
+<!-- =====================Modal end block  -->
+
+<!--Toast Blok Started -->
+
+<!-- Message -->
+
+{% for message in messages %}
+
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" >
+    
+        <div class="toast-body">
+         {{message|safe}}
+        </div>
+  </div>
+</div>
+{% endfor %}
+
+
+
+{% if messages %}
+  <script>
+      {% for message in messages %}
+          $(document).ready(function () {
+              $('.toast').toast('show');
+          });
+      {% endfor %}
+  </script>
+{% endif %}
+
+
+
+<!--Toast End Block -->
+
+
+
+
+
+
+
+
+
+
+<body>
+  {% block data_container %} {% endblock %}
+
+
+  <!-- =========================================sarkarilook up to date logo ========================== -->
+  <div class="container d-flex justify-content-center mt-5 border-0">
+    <img src="/media/images/sarkarilook_logo.png" alt="sarkarilook" class="rounded img-fluid" alt="sarkarilook" />
+  </div>
+
+
+  <!-- ===========================================Disclaimer container ============================== -->
+  <div class="container  disclaimer_container">
+    <strong style="color:darkred;">Disclaimer:</strong> This Website "Sarkarilook"
+    is for all the students or people who want to fill the form in government vacancies.
+    This website provide update to all the government Vacancies details,Online Form ,Admit_card,Result And Answer key
+    And many more.
+    Our motive is to provide a proper and correct information to the people on a single "Sarkarilook" plateform.
+    You can downloads AdmitCard,can see Result,vacancies,Answer_key,government online Cirtificate varification,You can
+    also Fill online Scholarships form and many import link for your benificial purpose.
+    The Results or Marks update in this Website is only for the Information .we are not resposible for any kind of error
+    or wrong updation it may be possible mistake by human.
+    all efforts have been made to make the Information available on this Website correct and genuine.
+    <p style="color: darkred; text-align: center; margin-top: 10px;">This website well Views using latest chrome browser
+    </p>
+  </div>
+
+  <!-- ====================================contact badge container================================ -->
+  <div class="container text-center contact_badge mt-5">
+    <div> &copy Share your views or suggetion to us. <i class="fa fa-envelope "></i> <a href="mailto:contactus@sarkarilook.com"><strong>contactus@sarkarilook.com</a></strong></div>
+  </div>
+
+
+
+  <!-- ===========================================footer container============================= -->
+
+  <div class="container-fluid footer">
+    <div class="row  mt-0 ">
+
+
+      <div class="col mt-4 col-lg-4">
+        <div class=" container ">
+          <ul>
+            <p class=" font-weight-bolder text-white "><strong>Join Us </strong></p>
+            <a class="nav-link active text-white " href="https://www.facebook.com/Sarkarilookcom-108442247408524/">
+              <span style="font-size:1.2em;"><i class="fab fa-facebook"> </i></span> Facebook Page</a>
+
+            <a class="nav-link active text-white " href="# ">
+              <span style="font-size: 1.2em;"><i class="fab fa-instagram-square"> </i></span> Instagram</a>
+              <a class="nav-link active text-white " href="# ">
+                <span style="font-size: 1.2em;"><i class="fab fa-telegram-plane"> </i></span> Telegram</a>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="col mt-4 col-lg-4">
+        <div class=" container">
+          <ul>
+            <p class=" font-weight-bolder text-white "><strong>UseFull Links</strong></p>
+            <a class="nav-link active text-white " href="{% url 'about_us' %} ">
+              <span style="font-size: 1.2em;"><i class="fas fa-user"> </i></span> Python blog Comming Soon..</a>
+
+            <a class="nav-link active text-white " href="https://imageclick.pythonanywhere.com/">
+              <span style="font-size: 1.2em;"><i class="fas fa-images"> </i></span> Free images website</a>
+         <a class="nav-link active text-white " href="wa.link/ylvbdj">
+              <span style="font-size: 1.2em;"><i class="fab fa-whatsapp"> </i></span> Support 24/7</a>
+
+          </ul>
+        </div>
+
+      </div>
+
+
+      <div class="col mt-4 col-lg-4">
+        <div class=" container">
+          <ul>
+            <p class=" font-weight-bolder text-white "><strong>About Sarkarilook</strong> </p>
+            <a class="nav-link active text-white " href="# ">
+              <span style="font-size: 1.2em;"><i class="fas fa-envelope-square"> </i> </span>contactus@sarkarilook.com
+            </a>
+
+             <a class="nav-link active text-white " href="{% url 'about_us' %} ">
+              <span style="font-size: 1.2em;"><i class="fas fa-user"> </i></span> About Us</a>
+             <a class="nav-link active text-white " href="# ">
+              <span style="font-size: 1.2em;"><i class="fas fa-comments"> </i></span> Contact Us</a>
+
+
+          </ul>
+        </div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+  <!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>-->
+  <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>-->
+
+</body>
+
+</html>

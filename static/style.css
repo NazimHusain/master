@@ -1,0 +1,363 @@
+/* Left Slide Mobile Menu  */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    width: 75%;
+    height: 100%;
+    background-color:#500303;
+    color: #ffffff;
+    overflow: auto;
+    
+    
+  }
+
+  .navbar-collapse.collapsing {
+    left: -75%;
+    transition: height 0s ease;
+    
+  }
+
+  .navbar-collapse.show {
+    left: 0;
+    transition: left 300ms ease-in-out;
+    
+  }
+
+  .navbar-toggler.collapsed ~ .navbar-collapse {
+    transition: left 500ms ease-in-out;
+    
+  }
+}
+
+
+/* changes in navbar */
+.navbar{
+  background-color:#500303;
+  color: #ffffff;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  z-index:1;
+}
+
+  @media (max-width: 992px) {
+    .navbar{
+      position: fixed;
+      right: 0;
+      left: 0;   
+      border-radius: 0;
+      top: 0;
+      border-width: 0 0 1px;
+     
+    }      
+  }     
+  
+#barand_logo {
+  vertical-align: middle;
+  border: none;
+  max-width:3em;
+  filter: drop-shadow(1px 1px 3px #ccc2c2);
+}
+.navbar-brand {
+  color: #e0dfdc;
+  letter-spacing: .1em;
+  text-shadow: 0 -1px 0 #fff;
+}
+#brand_name_logo:hover{
+color: darkgrey;
+}
+
+.nav-item a:hover{
+font-weight: bold;
+}
+/* background: linear-gradient( to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)), url(https://d3nn873nee648n.cloudfront.net/900x600/19144/1-SM900236.jpg);
+    */
+
+*{
+  padding: 0%;
+  margin: 0%;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+  font-family:Times, 'Times New Roman', serif;
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial; */
+   /* font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS'; */
+  /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana; */
+  /* font-family:'Segoe UI', Tahoma, Verdana; */
+  /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans'; */
+  /* font-family: Arial, Helvetica, sans-serif; */
+  /* font-family:Impact, 'Arial Narrow Bold', sans-serif; */
+  /* font-family: Verdana, Tahoma, sans-serif;  */
+ }
+
+
+body{
+  background: #4096ee url("../media/images/index_background_img.jpg") repeat-x;
+  background-attachment: fixed;
+  z-index:-1;
+
+}
+
+.all_page_top_margin {
+  margin-top:12vh;
+}
+
+.marquee a{
+  text-decoration: none;
+  color: #ffffff;
+  font-size:1.2em;
+  font-family: 'Times New Roman', Times, serif,Arial,sans-serif,Calibri;
+  
+
+
+}
+
+.index_grid_post a {
+  border-style: outset;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+
+  
+}
+.index_grid_post a:hover {
+  color: white;
+  text-decoration: none;
+  border-style: inset;
+}
+
+/* headline of Post, admit card and block css  */
+.heading {
+  padding: 5px 0px 5px 5px;
+  text-transform: uppercase;
+  font-size: 1em;
+  color: white;
+  text-align: center;
+  border-style:outset;
+  font-weight: bold;
+  background-color:#7c0707;
+  font-family:'Times New Roman', Times, serif;
+}
+/* end block */
+
+/* post container  */
+.post_container {
+  border-style: outset;
+  font-family:'Times New Roman', Times, serif;
+  text-decoration:none;
+  background-color:#ffffff;
+}
+ol,
+ul {
+  color: blue;
+  font-style: bold;
+  list-style-type:square;
+  line-height: 15px;
+
+}
+.post_container a {
+  text-decoration: none;
+  font-size: 15px;
+  font-family:Times;
+}
+.post_container a:hover {
+  text-decoration: none;
+  font-size: 16px;
+  color: red;
+}
+.post_container a:visited {
+  text-decoration:underline;
+  background-color: transparent;
+  color: #660066;
+}
+.contact_badge {
+  background-color: #ffffff;
+  transition: 2s;
+  box-shadow: 10px 10px grey;
+  border-radius: 25px;
+  margin-bottom: 100px;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+.contact_badge a{
+  color: rgb(3, 3, 83);
+  font-weight: bolder;
+  text-decoration:none ;
+}
+
+.contact_badge :hover{
+    cursor: pointer;
+    background-color:darkorange;
+    border-radius: 25px;
+    color: white;
+
+
+}
+.disclaimer_container{
+  color: #1a1818;
+  font-weight: bolder;
+  text-align: justify;
+}
+/* footer ===============================================footer */
+.footer{
+  color: #ffffff;
+  background-color:#500303;
+
+}
+
+
+ /* ======================================post information=================================== */
+ .short_info{
+
+color:darkblue;
+margin-top: 20vh;
+font-family:'Times New Roman', Times, serif;
+
+ }
+ .post-box-header{
+color:blue;
+font-weight: bold;
+/* font-style: italic; */
+/* font-weight: bolder; */
+/* font-weight: lighter; */
+
+ }
+
+ .post_info{
+   /* margin-top: 50px; */
+  color:black;
+  font-family: 'Times New Roman', Times, serif;
+  border-style:solid;
+  /* border-color:#e0dfdc; */
+  /* border-width: 0em; */
+  
+
+
+ }
+.important_link a{
+  color: #121212;
+  border-style:none;
+  
+}
+.important_link a:hover{
+  color: #920e0a;
+font-style: italic;
+font-weight: bold;
+border-style: none;
+
+}
+.important_link a:visited{
+  color: #471735;
+}
+
+ /* ======================================Registration  Form=================================== */
+ .registration_title{
+font-family: 'Times New Roman', Times, serif;
+border-bottom-style: outset;
+font-weight:bold;
+ }
+ .register_body{
+   border-radius: 25px;
+  
+ }
+
+ /* ================================login modal =============================== */
+ .center-block{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+ /* Login Form block Started  */
+    
+ .divider {
+  position: relative;
+  text-align: center;
+  margin: 15px 0px;
+}
+
+.divider span {
+  padding: 8px;
+  position: relative;
+  z-index: 20 !important;
+  font-size: 15px;
+}
+
+.divider:after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  z-index: 1 !important;
+}
+/*password reset page CSS*/
+ .reset {
+        max-width: 400px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        margin: auto;
+    }
+
+    .reset h1 {
+        display: block;
+        float: left;
+        font-size: 30px;
+        border-bottom: 6px solid #44ccaa;
+        margin-bottom: 50px;
+        padding: 13px 0;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .reset_form {
+        background: none;
+        color: white;
+        padding: 5px;
+        margin: 10px;
+        font-weight: bold;
+        border-bottom: 1px solid white;
+        display: inline-block;
+    }
+
+/* message toast  */
+.toast{
+  width: 400px;
+  position:fixed;
+  bottom: 30px;
+  left: 70%;
+  color: white;
+  font-weight: bold;
+  background-color:orangered;
+  padding:0px;
+  text-align: center;
+  z-index: 1;
+  font-size: 18px;
+  box-shadow:0px 0px 100px black ;
+  border-radius: 25px;
+}
+
+@media (max-width: 992px) {
+  .toast{
+  width:auto;
+  bottom: 30px;
+  position:fixed;
+  left: 0%;
+  color: white;
+  font-weight: bold;
+  background-color:orangered;
+  padding:0px;
+  text-align: center;
+  z-index: 1;
+  font-size: 18px;
+  box-shadow:0px 0px 100px black ;
+  border-radius: 25px;
+   
+  }      
+}   

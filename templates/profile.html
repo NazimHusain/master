@@ -1,0 +1,27 @@
+{% extends 'navbar.html' %} {% load static %} 
+{% block data_container  %}
+<body style="background:white">
+
+<div class="container all_page_top_margin change-password-form pb-3 shadow ">
+ <!-- Message -->
+ <h5 class="p-3"><strong>Edit Your Profile...</strong></h5>
+       
+         <form method="POST" action="{% url 'edit_profile' %}" class="px-5 " novalidation>
+          {% csrf_token %}
+ 
+               <b> {{form.as_p}}</b>
+                
+
+                  <button type="submit" class="btn btn-success">Update Profile</button><br>
+            </form>
+
+</div>
+
+
+
+                
+</body>
+{% endblock %}
+
+
+

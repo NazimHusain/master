@@ -1,0 +1,17 @@
+{% extends 'navbar.html' %} {% load static %} 
+
+{% block data_container  %}
+<body style="background:white">
+<div class="container all_page_top_margin">
+<p>Nazim Husain</p>
+{% for admit_card in admit_cards %}
+ <li> <a href="{% url 'post_info' admit_card.id %}"><strong><img src="/media/images/new_icon.gif"style="width:30px;height:15px">{{admit_card.post_stage}} <span style="color:darkred">12 Jan 2021</strong></span></a></li><br>
+
+{% endfor %}
+</div>
+
+
+
+                
+</body>
+{% endblock %}

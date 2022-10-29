@@ -1,0 +1,118 @@
+{% extends 'navbar.html' %} {% load static %}
+
+{% block data_container  %}
+<body style="background:white">
+
+
+<div class="container all_page_top_margin">
+
+    <div class="card bg-light register_body">
+        <div class="card-body mx-auto">
+
+            <!--message alert block -->
+            <div>
+                {% for message in messages %}
+                <small class="text-danger ml-3"> {{message |linebreaks}}</small>
+
+                {% endfor %}
+            </div>
+
+            <p class="card-title registration_title">Registration Form</p>
+           
+            <form action="{% url 'registration' %}" method="POST">
+                {% csrf_token %}
+
+                <!--First Userame Block -->
+                <div class="form-group input-group overflow-hidden">
+                    <div class="input-group-prepend">
+                <span class="input-group-text ">
+                    <span style="font-size: 1em; color: Tomato;"><i class="fa fa-at"></i></span>
+                </span>
+                    </div>
+                    <input type="name" name="username" class="form-control" id="Userame"
+                           placeholder="Enter Username Name" required/>
+
+                </div>
+
+                <!--First Name Block -->
+                <div class="form-group input-group mt-2">
+                    <div class="input-group-prepend">
+        <span class="input-group-text">
+            <span style="font-size: 1em; color: Tomato;"><i class="fa fa-user"></i></i></span>
+        </span>
+                    </div>
+
+                    <input type="name" name="first_name" class="form-control" id="first_name"
+                           placeholder="Enter First Name" required/>
+                </div>
+
+                <!--Last Name Block -->
+                <div class="form-group input-group mt-2">
+                    <div class="input-group-prepend">
+        <span class="input-group-text">
+         <span style="font-size: 1em; color: Tomato;"><i class="fa fa-user"></i></span>
+       </span>
+                    </div>
+                    <input type="name" name="last_name" class="form-control" id="last_name"
+                           placeholder="Enter Last Name" required/>
+                </div>
+
+
+                <!--Email Block -->
+                <div class="form-group input-group mt-2">
+                    <div class="input-group-prepend">
+        <span class="input-group-text">
+         <span style="font-size: 1em; color: Tomato;"><i class="fa fa-envelope "></i></span>
+       </span>
+                    </div>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter Your Email"
+                           required/>
+                </div>
+
+
+                <!--Password  Block -->
+                <div class="form-group input-group mt-2">
+                    <div class="input-group-prepend">
+        <span class="input-group-text">	
+          <span style="font-size: 1em; color: Tomato;"><i class="fa fa-lock "></i></span>
+  </span>
+                    </div>
+                    <input type="password" name="password" class="form-control" id="password"
+                           placeholder="Enter Password" required/>
+                </div>
+
+                <!--Confirm Password Block -->
+                <div class="form-group input-group mt-2">
+                    <div class="input-group-prepend">
+        <span class="input-group-text">
+        <span style="font-size: 1em; color: Tomato;"><i class="fa fa-unlock  "></i></span>
+       </span>
+                    </div>
+                    <input type="password" name="confirm_password" class="form-control" id="confirm_password"
+                           placeholder="Confirm Password" required/>
+                </div>
+
+                <!-- button  -->
+                <button type="submit" class="btn btn-block btn-success font-weight-bold mt-2"><strong>Register
+                    Now </strong>
+                </button>
+                <p class="text-center mt-3 font-weight-bold" data-toggle="modal" data-target="#exampleModal"> Have an
+                    account ?
+                    <strong style="color:rgb(46, 46, 226);cursor: pointer;">Login Now </strong>
+                </p>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--=================================login block ====================================-->
+
+
+
+
+</body>
+
+
+{% endblock %}

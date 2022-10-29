@@ -1,0 +1,220 @@
+{% extends 'navbar.html' %}
+  {% load static %}  
+
+{% block data_container  %}
+
+
+<!-- ====================================marquee container ========================== -->
+<div class="container all_page_top_margin marquee">
+ {% for random_post in random_posts  %}
+    <marquee behavior="alternate" scrollamount="5" onmouseover="this.stop();"onmouseout="this.start();"><a href="{% url 'post_info' random_post.id %}"target="_blank" ><strong>{{random_post.post_title |default:"Post not Available"}}<span style="color:orange"> Last Date: {{random_post.post_last_date}}</span> </strong></a></marquee>
+{% endfor %}
+</div>
+        
+
+<!-- alert message  -->
+ 
+
+<!-- ======================================Grid Container ========================== -->
+<div class="container  d-md-block d-lg-block">
+  <!-- first row of cards  -->
+ 
+                  <div class="row">
+                                <div class=" col-6 col-sm-4 col-md-4 col-lg-4">
+                                  <div class="card mb-2 ">
+                            
+                                      <a href="{% url 'post_info' first.id %}" class="btn btn-dark "><strong>{{ first.post_title|default:"Post not Available"}}</strong></a>
+                            
+                            
+                                  </div>
+                                </div>
+
+                                  <div class="col-6 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="card mb-2">
+                                
+                                        <a href="{% url 'post_info' second.id %}" class="btn btn-danger"><strong>{{ second.post_title |default:"Post not Available"}}</strong></a>
+                                  
+                                    </div>
+                                  </div>
+
+
+                                  <div class="col-6 col-sm-4 col-md-4 col-lg-4 ">
+                                    <div class="card mb-2">
+                              
+                                        <a href="{% url 'post_info' third.id %}" class="btn btn-success"><strong>{{ third.post_title |default:"Post not Available"}}</strong></a>
+                                  
+                                    </div>
+                                  </div>
+        
+                    <!-- </div> -->
+                    <!-- first row block end  -->
+
+            <!-- second row of cards -->
+            <!-- <div class="row"> -->
+
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-4">
+                          <div class="card mb-2">
+                              <a href="{% url 'post_info' fourth.id %}" class="btn btn-warning"><strong> {{ fourth.post_title |default:"Post not Available"}}</strong></a>
+                          </div>
+                        </div>
+
+
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-4">
+                          <div class="card mb-2">
+                              <a href="{% url 'post_info' fifth.id %}" class="btn btn-secondary"><strong>{{ fifth.post_title |default:"Post not Available"}} </strong></a>
+                          </div>
+                        </div>
+
+                <div class="col-6 col-sm-4 col-md-4 col-lg-4">
+                  <div class="card mb-2">
+                      <a href="{% url 'post_info' sixth.id %}" class="btn btn-primary"><strong> {{ sixth.post_title |default:"Post not Available"}}</strong></a>
+                  </div>
+                </div>
+
+
+          </div>
+          <!-- second row end block  -->
+
+
+
+
+</div>
+          
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+<!-- =============================Post Container============================= -->
+<div class="container post_container">
+   
+        <div class="row"> 
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                                        <h4 class="heading">Latest Online Form</h4>
+                                  {% for post in posts%}
+                          
+                                        <ul>
+                                            <li> <a href="{% url 'post_info' post.id %}"><strong>{{post.post_title |default:"Post not Available"}} <span style="color:darkred"> Last Date: {{post.post_last_date}}</strong></span></a></li>
+                                        </ul>
+                                          
+                                  {% endfor %}
+                            </div>
+         
+
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                                    <h4 class="heading"> Admit Card</h4> 
+                                    {% for admit_card in admit_cards %}
+                                        <ul>
+                                            <li> <a href="{% url 'post_info' admit_card.id %}"><strong>{{admit_card.post_title |default:"admit_card not Available"}} <span style="color:darkred"> </strong></span></a></li>
+                                            
+                                          
+                                            </ul>
+                                    {% endfor %}
+                            </div>
+
+
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                                        <h4 class="heading">View Result</h4>
+                                        {% for result in results %}
+                                        <ul>
+                                            <li> <a href="{% url 'post_info' result.id %}"><strong>{{result.post_stage |default:"Result not Available"}} <span style="color:darkred">12 Jan 2021</strong></span></a></li>
+
+                                          
+                                        </ul>
+                                      {% endfor %}
+                            </div>
+
+
+ 
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                                    <h4 class="heading">Syllabus</h4>
+                                    {% for syllabus in syllabus %}
+                                      <ul>
+                                          <li> <a href="{% url 'post_info' syllabus.id %}"><strong>{{syllabus.post_stage |default:"Syllabue not Available"}} <span style="color:darkred">12 Jan 2021</strong></span></a></li>
+
+                                        
+                                      </ul>
+                                    {% endfor %}
+                          </div>
+       
+
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                                  <h4 class="heading">Answer Keys</h4> 
+                                  {% for answer_key in answer_key %}
+                                  <ul>
+                                      <li> <a href="{% url 'post_info' answer_key.id %}"><strong>{{answer_key.post_stage |default:"Answer not Available"}} <span style="color:darkred">12 Jan 2021</strong></span></a></li>
+                                      
+                                    
+                                      </ul>
+                              {% endfor %}
+                              
+
+                        </div>
+
+
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                                    <h4 class="heading">Admission</h4>
+                                  {% for institute in institute %}
+                                    <ul>
+                                        <li> <a href="{% url 'admission' institute.unique_advt_number_primary_key %}"><strong>{{institute.institute_name |default:"Admission Post Available"}} </strong></a></li>
+                            
+                                      
+                                        </ul>
+                                {% endfor %}
+
+                        </div>
+
+
+  
+                          <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                                          <h4 class="heading">Important</h4>
+                                          {% for important in importants %}
+                                          <ul>
+                                              <li> <a href="{% url 'important' important.primary_key_name %}"><strong>{{important.provider_name |default:"Important Post not Available"}} </strong></a></li>
+                                  
+                                            
+                                              </ul>
+                                      {% endfor %}
+
+                            </div>
+   
+
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                                      <h4 class="heading">Cirtificate Varification</h4> 
+                                      {% for certificate in certificates %}
+                                          <ul>
+                                              <li> <a href="{% url 'documents' certificate.unique_advt_number_primary_key %} "><strong>{{certificate.document_name | default:"Cirtiifcate Post not Available"}} </strong></a></li>
+                                  
+                                            
+                                              </ul>
+                                      {% endfor %}
+
+
+                            </div>
+
+
+                        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                    <h4 class="heading">UP Comming Post</h4>
+                                  {% for up_comming in up_comming %}
+                                        <ul>
+                                            <li> <a href="{% url 'post_info' up_comming.id %}"><strong>{{up_comming.post_stage |default:"up_comming not Available"}} </strong></a></li>
+
+                                          
+                                            </ul>
+                                    {% endfor %}
+                        </div>
+
+    </div> <!-- Row block Close-->
+
+</div> <!--post container close-->
+
+
+
+
+
+{% endblock %}

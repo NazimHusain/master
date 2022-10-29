@@ -1,0 +1,17 @@
+{% extends 'navbar.html' %} {% load static %} 
+
+{% block data_container  %}
+<body style="background:white">
+<div class="container all_page_top_margin">
+<p>Nazim Husain</p>
+{% for post in posts %}
+ <li> <a href="{% url 'post_info' post.id %}"><strong><img src="images/new3.gif"style="width:30px;height:15px">{{post.post_title}} <span style="color:darkred">12 Jan 2021</strong></span></a></li><br>
+
+{% endfor %}
+</div>
+
+
+
+                
+</body>
+{% endblock %}

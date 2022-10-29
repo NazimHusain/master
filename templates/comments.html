@@ -1,0 +1,64 @@
+  {% load humanize %}
+   <div class="container-fluid mt-2">
+                        <div class="form-group row">
+                            <!-- Comment start form  block  -->
+                            <form method="post" class="comment_form" action=".">
+                         {% csrf_token %} 
+
+{{comment_form.as_p}} 
+                         
+                {% if request.user.is_authenticated %}
+                                <input type="submit" value="submit" class="btn btn-outline-success" />
+                {% else %}
+                                
+                                <input type="submit" value="submit" id="btn1" class="btn btn-outline-success" title="login first to comments" /> 
+                                <button class="login_alert btn-danger btn-sm ml-3" data-toggle="modal" data-target="#exampleModal"  style="display:none">Click Here To Login First.</button>
+                {% endif %}
+                            </form>
+                            <!-- End Comment form block  -->
+                        </div>
+                    </div>
+
+                
+
+  {{comments.count}} Comment{{comments|pluralize}}
+  {% for comment in comments %}
+                    <blockquote class="blockquote">
+                        <p class="mb-0"><small>{{comment.content}}</small></p>
+        
+                        <footer class="blockquote-footer mt-1">
+                            By <cite title="Source Title"><small>{{comment.user|capfirst}} {{comment.timestamp|naturaltime}}</small></cite>
+                            <button class="reply_btn btn btn-outline-dark btn-sm">Reply</button>
+
+                        </footer>
+                    </blockquote>
+                    <!-- Reply form start block  -->
+                    <div class="replies-comment  mt-2 mx-4" style="display:none">
+                        
+ {% for reply in comment.replies.all %}
+                        <blockquote class="blockquote">
+                            <p class="mb-0"><small>{{reply.content}}</small></p>
+                            <footer class="blockquote-footer mt-1">
+                                By <cite title="Source Title"><small>{{reply.user|capfirst}} {{reply.timestamp|naturaltime}}</small></cite>
+                            </footer>
+                        </blockquote>
+{% endfor %}
+
+                        <div class="form-group row">
+                            <form method="post" class="reply_form" action=".">
+                                {% csrf_token %}
+                                <input type="hidden" name="comment_id" value="{{comment.id}}" /> 
+ {{comment_form.as_p}}
+
+ {% if request.user.is_authenticated %}
+                                <input type="submit" value="submit" class="btn btn-outline-success" /> 
+{% else %}
+                                
+                                <input type="submit" value="submit" id="submit_event"class="btn btn-outline-success" title="login first to comments" disabled /> 
+{% endif %}
+                            </form>
+                        </div>
+                    </div>
+{% endfor %}                    <!-- End main content selection  -->
+
+                  

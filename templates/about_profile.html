@@ -1,0 +1,30 @@
+{% extends 'navbar.html' %} {% load static %} 
+{% block data_container  %}
+<body style="background:white">
+
+<div class="container all_page_top_margin">
+    <div class="card bg-light register_body">
+        <div class="card-body mx-auto">
+
+        <h1 class="ml-3 font-weight-bold text-decoration-underline">About Me ! </h1>
+        <h5>Username: <strong style="color:green">{{user.username}}</strong></h5>
+        <h5>First Name:<strong style="color:green"> {{user.first_name}}</strong></h5>
+        <h5>Last Name:<strong style="color:green"> {{user.last_name}}</strong></h5>
+        <h5>Email: <strong style="color:green">{{user.email}}</strong></h5>
+         <h5>Member Since: <strong style="color:green">{{user.date_joined}}</strong></h5>
+       
+
+
+
+      
+    </div>
+    </div>
+</div>
+
+
+                
+</body>
+{% endblock %}
+
+
+
